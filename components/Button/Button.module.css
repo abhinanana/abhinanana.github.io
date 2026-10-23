@@ -1,5 +1,5 @@
 /* The site's one button: a 180×60 pill with a hard black offset shadow.
-   Hover only shifts the fill; pressing pushes it down into its shadow. */
+   Hover raises it off its shadow; pressing pushes it down into it. */
 .base {
   display: inline-flex;
   align-items: center;
@@ -19,7 +19,7 @@
   text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
-  transition: background-color 150ms ease, translate 90ms ease, box-shadow 90ms ease;
+  transition: translate 180ms ease, box-shadow 180ms ease;
 }
 
 .primary {
@@ -32,16 +32,13 @@
   background: var(--color-pink-light);
 }
 
-.primary:hover {
-  background: var(--color-pink-hot);
-}
-
-.secondary:hover {
-  background: var(--color-pink-pale);
+.base:hover {
+  translate: 0 -4px;
+  box-shadow: 0 11px 0 black;
 }
 
 .base:active {
-  translate: 0 4px;
+  translate: 0 2px;
   box-shadow: 0 3px 0 black;
 }
 
