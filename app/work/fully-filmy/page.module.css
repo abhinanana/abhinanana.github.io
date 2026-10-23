@@ -64,6 +64,12 @@
   z-index: 5;
 }
 
+/* KreditBee TV screen: round the thumbnail to the inner corner of the pink
+   screen border (28px in rectangle11.svg) so it sits inside the border. */
+.screenLink > img {
+  border-radius: 28px;
+}
+
 /* decorative play badge centered on every film card */
 .playBadge {
   position: absolute;

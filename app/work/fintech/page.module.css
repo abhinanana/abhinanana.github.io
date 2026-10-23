@@ -51,15 +51,22 @@
 }
 
 /* dark scrim overlay rect (rgba(0,0,0,0.71)) — the tile's chrome and click
-   target. Static, with the same soft drop shadow as the Social Media reels. */
+   target. No shadow; on hover its pink border thickens, like the Social Media
+   reels. */
 .cardOverlay {
   display: block;
   position: absolute;
   border: 3px solid #ff43b7;
   background: rgba(0, 0, 0, 0.71);
   background-clip: padding-box;
-  box-shadow: 0 7px 0 rgb(0 0 0 / 0.16);
   cursor: pointer;
+  transition: box-shadow 150ms ease;
+}
+
+@media (hover: hover) {
+  .cardOverlay:hover {
+    box-shadow: 0 0 0 3px #ff43b7;
+  }
 }
 
 .cardOverlay:focus-visible {
@@ -151,7 +158,6 @@
     border: 3px solid #ff43b7;
     border-radius: 10px;
     background: #000000;
-    box-shadow: 0 7px 0 rgb(0 0 0 / 0.16);
     text-decoration: none;
     cursor: pointer;
     z-index: 2;

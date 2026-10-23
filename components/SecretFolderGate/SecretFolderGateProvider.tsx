@@ -103,6 +103,9 @@ export default function SecretFolderGateProvider({
             data-secret-folder-dialog
             onClick={(event) => event.stopPropagation()}
           >
+            <button type="button" className={styles.close} onClick={close} aria-label="Close">
+              ✕
+            </button>
             <h2 id="secret-folder-gate-title" className={styles.title}>
               Oops, you&rsquo;re not allowed in there!
             </h2>

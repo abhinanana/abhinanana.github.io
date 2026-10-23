@@ -226,7 +226,7 @@ function HeroCollage() {
 
 function DesktopCanvas() {
   return (
-    <ScaledCanvas className={styles.canvas} ariaLabel="Social Media Brand Identity case study" height={5760} header={<Header />}>
+    <ScaledCanvas className={styles.canvas} ariaLabel="Social Media Brand Identity case study" height={5650} header={<Header />}>
 
       <AmbientLayer>
         {/* Hero / Not-Like-Other-Brands open right margin */}
@@ -415,7 +415,7 @@ function DesktopCanvas() {
         </p>
       </section>
       {/* Closing buttons */}
-      <div className={buttons.canvasRow} style={{ left: 80, top: 5620 }}>
+      <div className={buttons.canvasRow} style={{ left: 80, top: 5510 }}>
         <Link href={NEXT.href} className={buttons.primary}>
           Next Project
         </Link>

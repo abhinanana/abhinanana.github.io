@@ -68,7 +68,7 @@ function DesktopCanvas() {
 
       <AmbientLayer>
         {/* Open right zone — big lime starburst filling the empty right half */}
-        <Starburst left={760} top={300} size={460} opacity={0.45} />
+        <Starburst left={700} top={278} size={460} opacity={0.45} />
       </AmbientLayer>
 
       {/* 26:231 */}

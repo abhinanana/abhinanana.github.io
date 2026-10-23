@@ -335,6 +335,11 @@
   overflow-wrap: anywhere;
 }
 
+/* Extra room between the bio and its buttons (on top of the column gap). */
+.footerButtons {
+  margin-top: 16px;
+}
+
 /* Desktop layouts also need a height axis. This compact, fluid mode keeps the
    complete form and About content inside their snap panels on laptop screens
    without changing the roomy presentation on taller monitors. */
@@ -381,6 +386,11 @@
     /* About Me now drops to the shared heading offset; keep the phone body
        hanging from the old 5svh line so its scale still clears the fold. */
     --body-offset: calc(6px + clamp(28px, 5svh, 48px) - var(--section-heading-offset));
+    /* Shorter antenna (same proportions) so it tops out inside Contact
+       instead of poking into the bottom of the Work section. */
+    --ant-top-h: 160px;
+    --ant-mid-h: 216px;
+    --ant-base-h: 264px;
     scale: 0.92;
     transform-origin: 50% var(--ant-total);
   }

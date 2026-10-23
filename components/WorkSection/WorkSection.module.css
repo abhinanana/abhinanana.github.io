@@ -129,6 +129,9 @@
 
   .dontLookWrapper {
     width: clamp(190px, 31svh, 245px);
+    /* Hide the same share of the (smaller) folder as on taller screens so
+       the "Don't Look!" label stays readable. */
+    right: calc(-0.18 * clamp(190px, 31svh, 245px));
   }
 }
 
