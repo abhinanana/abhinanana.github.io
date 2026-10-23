@@ -74,10 +74,11 @@
 .projectStrip span {
   display: flex;
   align-items: center;
-  width: min(100%, 1280px);
+  width: 100%;
   height: 100%;
-  margin: 0 auto;
-  padding-left: 80px;
+  /* Figma x=80 of the 1280 frame, as a share of the width so the title
+     lines up with the scaled canvas content at every viewport width. */
+  padding-left: 6.25%;
   color: #ddffb7;
   font-family: 'Helvetica', Arial, sans-serif;
   font-size: 15px;
