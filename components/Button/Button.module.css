@@ -1,0 +1,104 @@
+/* The site's one button: a 180×60 pill with a hard black offset shadow.
+   Hover only shifts the fill; pressing pushes it down into its shadow. */
+.base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px;
+  height: 60px;
+  padding: 0 11px;
+  border: 3px solid black;
+  border-radius: 999px;
+  box-shadow: 0 7px 0 black;
+  color: black;
+  font-family: 'Helvetica', Arial, sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.115;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 150ms ease, translate 90ms ease, box-shadow 90ms ease;
+}
+
+.primary {
+  composes: base;
+  background: var(--color-pink-mid);
+}
+
+.secondary {
+  composes: base;
+  background: var(--color-pink-light);
+}
+
+.primary:hover {
+  background: var(--color-pink-hot);
+}
+
+.secondary:hover {
+  background: var(--color-pink-pale);
+}
+
+.base:active {
+  translate: 0 4px;
+  box-shadow: 0 3px 0 black;
+}
+
+.base:focus-visible {
+  outline: 3px solid black;
+  outline-offset: 4px;
+}
+
+.base:disabled {
+  opacity: 0.6;
+  cursor: default;
+  translate: none;
+  box-shadow: 0 7px 0 black;
+}
+
+/* A row of buttons; on desktop every button in it takes the widest label's
+   width so pairs always match. Inside a case-study canvas the row also
+   cancels the canvas scale (ScaledCanvas sets --canvas-scale), so buttons are
+   exactly the homepage size; anchored bottom-left so the row's bottom edge
+   stays on its Figma line. */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+
+.canvasRow {
+  composes: row;
+  position: absolute;
+  transform-origin: left bottom;
+  scale: calc(1 / var(--canvas-scale, 1));
+}
+
+@media (min-width: 768px) {
+  .row {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    width: max-content;
+  }
+}
+
+@media (max-width: 767px) {
+  .base {
+    min-width: 156px;
+    height: 56px;
+    font-size: 16px;
+  }
+
+  .row {
+    gap: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .base {
+    transition: none;
+  }
+}

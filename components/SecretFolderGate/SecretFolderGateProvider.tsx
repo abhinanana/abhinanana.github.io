@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
+import buttons from '@/components/Button/Button.module.css'
 import styles from './SecretFolderGate.module.css'
 
 const TRIGGER_ATTRIBUTE = 'data-secret-folder-gate'
@@ -105,24 +106,21 @@ export default function SecretFolderGateProvider({
             <h2 id="secret-folder-gate-title" className={styles.title}>
               Oops, you&rsquo;re not allowed in there!
             </h2>
-            <div className={styles.actions}>
+            <div className={`${buttons.row} ${styles.actions}`}>
               <Link
                 ref={trespassRef}
                 href="/work/fun-stuff"
-                className={`${styles.action} ${styles.trespass}`}
+                className={buttons.primary}
                 onClick={() => setOpen(false)}
               >
                 Tresspass
               </Link>
               <Link
                 href="/#work"
-                className={`${styles.action} ${styles.goBack}`}
+                className={buttons.secondary}
                 onClick={() => setOpen(false)}
               >
-                <span>
-                  Go Back <br aria-hidden="true" />
-                  to Projects
-                </span>
+                Go Back to Projects
               </Link>
             </div>
           </div>

@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Nav from '@/components/Nav/Nav'
+import buttons from '@/components/Button/Button.module.css'
 import styles from './not-found.module.css'
 
 export default function NotFound() {
@@ -13,7 +14,7 @@ export default function NotFound() {
           The page you&rsquo;re looking for doesn&rsquo;t exist &mdash; it may have been moved, or the
           link might be out of date.
         </p>
-        <Link href="/" className={styles.homeButton}>
+        <Link href="/" className={`${buttons.primary} ${styles.homeButton}`}>
           Back to Portfolio
         </Link>
       </main>

@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import styles from './Hero.module.css'
-import Magnetic from '@/components/Fx/Magnetic'
+import buttons from '@/components/Button/Button.module.css'
 
 const WELCOME = 'Welcome'
 
@@ -76,17 +76,13 @@ export default function Hero() {
             <span className={styles.titleWordB}>Portfolio</span>
           </h1>
 
-          <div className={styles.buttons}>
-            <Magnetic>
-              <a href="#work" className={styles.btnPrimary}>
-                Browse Projects
-              </a>
-            </Magnetic>
-            <Magnetic>
-              <a href="#contact" className={styles.btnSecondary}>
-                Get in Touch
-              </a>
-            </Magnetic>
+          <div className={`${styles.buttons} ${buttons.row}`}>
+            <a href="#work" className={buttons.primary}>
+              Browse Projects
+            </a>
+            <a href="#contact" className={buttons.secondary}>
+              Get in Touch
+            </a>
           </div>
         </div>
       </div>

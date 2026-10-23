@@ -1,6 +1,7 @@
 import Link from 'next/link'
-import Magnetic from '@/components/Fx/Magnetic'
+import CaseStudyHeader from '@/components/CaseStudyHeader/CaseStudyHeader'
 import ScaledCanvas from '@/components/ScaledCanvas/ScaledCanvas'
+import buttons from '@/components/Button/Button.module.css'
 import { getNextProject } from '@/lib/projects'
 import EmailerSubject from './EmailerSubject'
 import styles from './page.module.css'
@@ -46,22 +47,12 @@ function Arrow({
 }
 
 function Header() {
-  return (
-    <header className={styles.header}>
-      <nav className={styles.nav} aria-label="Project navigation">
-        <Link href="/#work">Work</Link>
-        <Link href="/#contact">Contact &amp; About</Link>
-      </nav>
-      <div className={styles.projectStrip}>
-        <span>Email Strategy</span>
-      </div>
-    </header>
-  )
+  return <CaseStudyHeader title="Email Strategy" />
 }
 
 function DesktopCanvas() {
   return (
-    <ScaledCanvas className={styles.canvas} ariaLabel="Email Strategy case study" height={2642} header={<Header />}>
+    <ScaledCanvas className={styles.canvas} ariaLabel="Email Strategy case study" height={2574} header={<Header />}>
 
       {/* ── Hero ── */}
       <h1 className={styles.title} data-reveal="rise">Designing Retention for SaaS </h1>
@@ -386,25 +377,19 @@ function DesktopCanvas() {
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img className={styles.graph} src={`${A}/vector11-graph.svg`} alt="" data-reveal="tilt" data-reveal-delay="1" />
 
-      {/* ── Footer buttons ── */}
-      <div className={`${styles.btnSlot} ${styles.btnSlotPrimary}`} data-reveal="pop">
-        <Magnetic>
-          <Link
-            href={NEXT.href}
-            className={styles.primaryButton}
-            data-secret-folder-gate="true"
-            aria-haspopup="dialog"
-          >
-            Next Project
-          </Link>
-        </Magnetic>
-      </div>
-      <div className={`${styles.btnSlot} ${styles.btnSlotSecondary}`} data-reveal="pop" data-reveal-delay="1">
-        <Magnetic>
-          <Link href="/#contact" className={styles.secondaryButton}>
-            Get in Touch
-          </Link>
-        </Magnetic>
+      {/* Closing buttons */}
+      <div className={buttons.canvasRow} style={{ left: 80, top: 2434 }}>
+        <Link
+          href={NEXT.href}
+          className={buttons.primary}
+          data-secret-folder-gate="true"
+          aria-haspopup="dialog"
+        >
+          Next Project
+        </Link>
+        <Link href="/#contact" className={buttons.secondary}>
+          Get in Touch
+        </Link>
       </div>
     </ScaledCanvas>
   )
@@ -533,23 +518,18 @@ function MobileLayout() {
       </section>
 
       <section className={styles.mobileSection}>
-        <div className={styles.mobileButtons}>
-          <Magnetic>
-            <Link
-              href={NEXT.href}
-              className={styles.primaryButton}
-              data-reveal="pop"
-              data-secret-folder-gate="true"
-              aria-haspopup="dialog"
-            >
-              Next Project
-            </Link>
-          </Magnetic>
-          <Magnetic>
-            <Link href="/#contact" className={styles.secondaryButton} data-reveal="pop" data-reveal-delay="1">
-              Get in Touch
-            </Link>
-          </Magnetic>
+        <div className={buttons.row}>
+          <Link
+            href={NEXT.href}
+            className={buttons.primary}
+            data-secret-folder-gate="true"
+            aria-haspopup="dialog"
+          >
+            Next Project
+          </Link>
+          <Link href="/#contact" className={buttons.secondary}>
+            Get in Touch
+          </Link>
         </div>
       </section>
     </div>

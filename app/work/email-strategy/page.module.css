@@ -28,62 +28,6 @@
   margin: 0;
 }
 
-/* ════════ Header (sticky) ════════ */
-.header {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  background: #ddffb7;
-}
-
-.nav {
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 58px;
-  width: min(100%, 1280px);
-  margin: 0 auto;
-  padding: 0 47px;
-}
-
-.nav a {
-  font-family: 'Helvetica', Arial, sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1.45;
-  letter-spacing: -0.08px;
-  color: #ff43b7;
-  text-decoration: none;
-  text-transform: capitalize;
-}
-
-.projectStrip {
-  height: 40px;
-  display: flex;
-  align-items: center;
-  background: #ff61cd;
-}
-
-.projectStrip span {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  /* Figma x=80 of the 1280 frame, as a share of the width so the title
-     lines up with the scaled canvas content at every viewport width. */
-  padding-left: 6.25%;
-  color: #ddffb7;
-  font-family: 'Helvetica', Arial, sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 1.45;
-  letter-spacing: -0.075px;
-  text-transform: capitalize;
-}
-
 /* ════════ Hero ════════ */
 .title {
   position: absolute;
@@ -663,7 +607,6 @@
   color: #ff1fa9;
 }
 
-
 /* ════════ The Result ════════ */
 .resultHeading {
   position: absolute;
@@ -756,82 +699,11 @@
   height: 475.5px;
 }
 
-/* ════════ Footer buttons ════════ */
-.primaryButton,
-.secondaryButton {
-  position: absolute;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 180px;
-  height: 60px;
-  border: 3px solid black;
-  border-radius: 63px;
-  color: black;
-  font-family: 'Helvetica', Arial, sans-serif;
-  font-size: 17px;
-  font-weight: 700;
-  line-height: 1.115;
-  text-align: center;
-  text-decoration: none;
-  transition: transform 200ms ease, box-shadow 200ms ease;
-}
-.primaryButton {
-  left: 61px;
-  top: 2397.5px;
-  background: #ff61cd;
-}
-.secondaryButton {
-  left: 273px;
-  top: 2397.5px;
-  background: #ffc4e8;
-}
-
-/* Tactile press model (homepage pill language) */
-.primaryButton,
-.secondaryButton {
-  box-shadow: 0 7px 0 black;
-}
-.primaryButton:hover,
-.secondaryButton:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 11px 0 black;
-}
-.primaryButton:active,
-.secondaryButton:active {
-  transform: translateY(2px);
-  box-shadow: 0 3px 0 black;
-}
-
-/* Slots carry the buttons' exact Figma coordinates so the links can sit
-   statically inside the Magnetic wrapper (which moves via `translate`). */
-.btnSlot {
-  position: absolute;
-}
-.btnSlotPrimary {
-  left: 80px;
-  top: 2397.5px;
-}
-.btnSlotSecondary {
-  left: 292px;
-  top: 2397.5px;
-}
-.btnSlot .primaryButton,
-.btnSlot .secondaryButton {
-  position: static;
-}
-
 /* ════════════════════════════════════════════════════════════════
    Mobile (stacked, approximate)
    ════════════════════════════════════════════════════════════════ */
 .mobile {
   display: none;
-}
-
-.mobileButtons {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
 }
 
 @media (max-width: 767px) {
@@ -902,26 +774,5 @@
     color: black;
     margin-bottom: 8px;
   }
-  .primaryButton,
-  .secondaryButton {
-    position: static;
-  }
 }
 
-/* ════════════════════════════════════════════════════════════════
-   Reduced motion — every animation added on this page settles to a
-   stable, fully-visible resting state.
-   ════════════════════════════════════════════════════════════════ */
-@media (prefers-reduced-motion: reduce) {
-  .primaryButton,
-  .secondaryButton {
-    transition: none;
-  }
-  .primaryButton:hover,
-  .secondaryButton:hover,
-  .primaryButton:active,
-  .secondaryButton:active {
-    transform: none;
-    box-shadow: none;
-  }
-}

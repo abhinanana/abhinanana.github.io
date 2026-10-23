@@ -1,6 +1,6 @@
 'use client'
 
-import { useLayoutEffect, useRef, useState, type ReactNode } from 'react'
+import { useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react'
 
 const DESIGN_WIDTH = 1280
 
@@ -18,6 +18,11 @@ const DESIGN_WIDTH = 1280
  * (sticky offsets and 100vw widths misbehave inside a transformed ancestor).
  * The Figma frames reserve the top `headerHeight` px for that bar, so the
  * scaled box is pulled up underneath the real header by that amount.
+ *
+ * `height` is the canvas height in Figma px. Every case study ends the same
+ * way rather than with Figma's uneven frame bottoms: the closing button row
+ * sits 100px below the last content and the canvas ends 80px (the page
+ * gutter) below the row.
  */
 export default function ScaledCanvas({
   height,
@@ -75,15 +80,19 @@ export default function ScaledCanvas({
       >
         <div
           data-scaled-canvas=""
-          style={{
-            position: 'absolute',
-            left: offsetX,
-            top: 0,
-            width: DESIGN_WIDTH,
-            height,
-            transform: `scale(${scale})`,
-            transformOrigin: 'top left',
-          }}
+          style={
+            {
+              position: 'absolute',
+              left: offsetX,
+              top: 0,
+              width: DESIGN_WIDTH,
+              height,
+              transform: `scale(${scale})`,
+              transformOrigin: 'top left',
+              // Lets children opt out of the scale (e.g. Button canvasRow).
+              '--canvas-scale': scale,
+            } as CSSProperties
+          }
         >
           {children}
         </div>

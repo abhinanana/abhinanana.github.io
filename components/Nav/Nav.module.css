@@ -12,9 +12,9 @@
   display: flex;
   align-items: center;
   height: 100%;
-  width: min(100%, 1280px);
-  margin: 0 auto;
-  padding: 0 48px;
+  width: 100%;
+  /* Last link ends on the page gutter, mirroring the content's left edge. */
+  padding: 0 var(--page-gutter);
   gap: 58px;
   justify-content: flex-end;
 }

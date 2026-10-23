@@ -2,8 +2,9 @@ import Image from 'next/image'
 import MediaThumbnail from '@/components/MediaThumbnail/MediaThumbnail'
 import Link from 'next/link'
 import { AmbientLayer, Starburst } from '@/components/Ambient/Ambient'
-import Magnetic from '@/components/Fx/Magnetic'
+import CaseStudyHeader from '@/components/CaseStudyHeader/CaseStudyHeader'
 import ScaledCanvas from '@/components/ScaledCanvas/ScaledCanvas'
+import buttons from '@/components/Button/Button.module.css'
 import { getNextProject } from '@/lib/projects'
 import styles from './page.module.css'
 
@@ -18,22 +19,12 @@ const YT_EPSON_BIG = 'https://www.youtube.com/watch?v=wRMV6qrXx-s'
 const YT_EPSON_SMALL = 'https://www.youtube.com/watch?v=TPIzrnSt-1k'
 
 function Header() {
-  return (
-    <header className={styles.header}>
-      <nav className={styles.nav} aria-label="Project navigation">
-        <Link href="/#work">Work</Link>
-        <Link href="/#contact">Contact &amp; About</Link>
-      </nav>
-      <div className={styles.projectStrip}>
-        <span>Ad Films</span>
-      </div>
-    </header>
-  )
+  return <CaseStudyHeader title="Ad Films" />
 }
 
 function DesktopCanvas() {
   return (
-    <ScaledCanvas className={styles.canvas} ariaLabel="Ad Films case study" height={2723} header={<Header />}>
+    <ScaledCanvas className={styles.canvas} ariaLabel="Ad Films case study" height={2612} header={<Header />}>
 
       <AmbientLayer>
         {/* top-right: open space beside the KreditBee text column */}
@@ -311,12 +302,6 @@ function DesktopCanvas() {
         <MediaThumbnail href={YT_SCHNEIDER_BIG} />
         <span className={styles.playBadge} aria-hidden="true" />
       </a>
-      <p className={`${styles.abs} ${styles.helv}`} data-reveal="rise" data-reveal-delay="1" style={{ left: 510, top: 1328, fontSize: 15, lineHeight: 1.115, color: 'black', margin: 0 }}>
-        Incomplete lighting
-      </p>
-      <p className={`${styles.abs} ${styles.helv}`} data-reveal="rise" data-reveal-delay="2" style={{ left: 210, top: 1727, fontSize: 15, lineHeight: 1.115, color: 'black', margin: 0 }}>
-        Half painted
-      </p>
       {/* Schneider tilted card 1 */}
       <div
         className={styles.abs}
@@ -458,34 +443,14 @@ function DesktopCanvas() {
         <MediaThumbnail href={YT_EPSON_SMALL} />
         <span className={`${styles.playBadge} ${styles.playBadgeSm}`} aria-hidden="true" />
       </a>
-      {/* ---- Footer buttons ---- */}
-      <p className={`${styles.abs} ${styles.helv}`} data-reveal="rise" data-reveal-delay="1" style={{ left: 95, top: 2413, fontSize: 15, lineHeight: 1.115, color: 'black', margin: 0 }}>
-        Heart of the office
-      </p>
-      <p className={`${styles.abs} ${styles.helv}`} data-reveal="rise" data-reveal-delay="2" style={{ left: 444, top: 2413, fontSize: 15, lineHeight: 1.115, color: 'black', margin: 0 }}>
-        Late for work
-      </p>
-      <div className={styles.abs} data-reveal="pop" style={{ left: 79, top: 2597 }}>
-        <Magnetic>
-          <Link
-            href={NEXT.href}
-            className={`${styles.footerBtn} ${styles.primaryBtn}`}
-            style={{ width: 180, height: 60 }}
-          >
-            Next Project
-          </Link>
-        </Magnetic>
-      </div>
-      <div className={styles.abs} data-reveal="pop" data-reveal-delay="1" style={{ left: 291, top: 2598 }}>
-        <Magnetic>
-          <Link
-            href="/#contact"
-            className={`${styles.footerBtn} ${styles.secondaryBtn}`}
-            style={{ width: 180, height: 60 }}
-          >
-            Get in Touch
-          </Link>
-        </Magnetic>
+      {/* Closing buttons */}
+      <div className={buttons.canvasRow} style={{ left: 80, top: 2472 }}>
+        <Link href={NEXT.href} className={buttons.primary}>
+          Next Project
+        </Link>
+        <Link href="/#contact" className={buttons.secondary}>
+          Get in Touch
+        </Link>
       </div>
     </ScaledCanvas>
   )
@@ -494,13 +459,7 @@ function DesktopCanvas() {
 function MobileLayout() {
   return (
     <div className={styles.mobile}>
-      <header className={styles.mobileHeader}>
-        <nav className={styles.mobileNav} aria-label="Project navigation">
-          <Link href="/#work">Work</Link>
-          <Link href="/#contact">Contact &amp; About</Link>
-        </nav>
-        <div className={styles.mobileStrip}>Ad Films</div>
-      </header>
+      <Header />
 
       <section className={styles.mobileSection}>
         <h1 className={styles.mobileTitle} data-reveal="rise">Turning scripts into action</h1>
@@ -560,17 +519,13 @@ function MobileLayout() {
         </a>
       </section>
 
-      <div className={styles.mobileButtons}>
-        <Magnetic>
-          <Link href={NEXT.href} className={`${styles.footerBtn} ${styles.primaryBtn}`} data-reveal="pop">
-            Next Project
-          </Link>
-        </Magnetic>
-        <Magnetic>
-          <Link href="/#contact" className={`${styles.footerBtn} ${styles.secondaryBtn}`} data-reveal="pop" data-reveal-delay="1">
-            Get in Touch
-          </Link>
-        </Magnetic>
+      <div className={`${styles.mobileButtons} ${buttons.row}`}>
+        <Link href={NEXT.href} className={buttons.primary}>
+          Next Project
+        </Link>
+        <Link href="/#contact" className={buttons.secondary}>
+          Get in Touch
+        </Link>
       </div>
     </div>
   )

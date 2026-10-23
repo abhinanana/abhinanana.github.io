@@ -2,9 +2,10 @@ import ImagePopup from '@/components/ImagePopup/ImagePopup'
 import Image from 'next/image'
 import Link from 'next/link'
 import { AmbientLayer, Starburst } from '@/components/Ambient/Ambient'
-import Magnetic from '@/components/Fx/Magnetic'
 import MediaThumbnail from '@/components/MediaThumbnail/MediaThumbnail'
+import CaseStudyHeader from '@/components/CaseStudyHeader/CaseStudyHeader'
 import ScaledCanvas from '@/components/ScaledCanvas/ScaledCanvas'
+import buttons from '@/components/Button/Button.module.css'
 import { getNextProject } from '@/lib/projects'
 import styles from './page.module.css'
 
@@ -125,22 +126,12 @@ function rotStyle(cx: number, cy: number, w: number, h: number, rot: number): Re
 }
 
 function Header() {
-  return (
-    <header className={styles.header}>
-      <nav className={styles.nav} aria-label="Project navigation">
-        <Link href="/#work">Work</Link>
-        <Link href="/#contact">Contact &amp; About</Link>
-      </nav>
-      <div className={styles.projectStrip}>
-        <span>Internal Communications</span>
-      </div>
-    </header>
-  )
+  return <CaseStudyHeader title="Internal Communications" />
 }
 
 function DesktopCanvas() {
   return (
-    <ScaledCanvas className={styles.canvas} ariaLabel="Internal Communications case study" height={6473} header={<Header />}>
+    <ScaledCanvas className={styles.canvas} ariaLabel="Internal Communications case study" height={5999} header={<Header />}>
 
       {/* ===== Ambient decoration (behind content; ~one slow object per section) ===== */}
       <AmbientLayer>
@@ -488,19 +479,14 @@ function DesktopCanvas() {
       )}
 
       {/* ===== Footer buttons ===== */}
-      <div className={styles.btnSlot} style={{ left: 62, top: 5820 }} data-reveal="pop">
-        <Magnetic>
-          <Link className={styles.primaryButton} href={NEXT.href}>
-            Next Project
-          </Link>
-        </Magnetic>
-      </div>
-      <div className={styles.btnSlot} style={{ left: 273, top: 5821 }} data-reveal="pop" data-reveal-delay="1">
-        <Magnetic>
-          <Link className={styles.secondaryButton} href="/#contact">
-            Get in Touch
-          </Link>
-        </Magnetic>
+      {/* Closing buttons */}
+      <div className={buttons.canvasRow} style={{ left: 80, top: 5859 }}>
+        <Link href={NEXT.href} className={buttons.primary}>
+          Next Project
+        </Link>
+        <Link href="/#contact" className={buttons.secondary}>
+          Get in Touch
+        </Link>
       </div>
     </ScaledCanvas>
   )
@@ -632,17 +618,13 @@ function MobileLayout() {
           <Image src={`${ASSET}/mailer-parenting.jpg`} alt="Parenting series mailer design" width={382} height={960} data-reveal="tilt" data-reveal-delay="1" />
         </div>
 
-        <div className={styles.mobileButtons}>
-          <Magnetic>
-            <Link href={NEXT.href} className={styles.primaryButton} data-reveal="pop">
-              Next Project
-            </Link>
-          </Magnetic>
-          <Magnetic>
-            <Link href="/#contact" className={styles.secondaryButton} data-reveal="pop" data-reveal-delay="1">
-              Get in Touch
-            </Link>
-          </Magnetic>
+        <div className={`${styles.mobileButtons} ${buttons.row}`}>
+          <Link href={NEXT.href} className={buttons.primary}>
+            Next Project
+          </Link>
+          <Link href="/#contact" className={buttons.secondary}>
+            Get in Touch
+          </Link>
         </div>
       </section>
     </div>

@@ -2,8 +2,9 @@ import { Fragment } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { AmbientLayer, Starburst } from '@/components/Ambient/Ambient'
-import Magnetic from '@/components/Fx/Magnetic'
+import CaseStudyHeader from '@/components/CaseStudyHeader/CaseStudyHeader'
 import ScaledCanvas from '@/components/ScaledCanvas/ScaledCanvas'
+import buttons from '@/components/Button/Button.module.css'
 import styles from './page.module.css'
 
 const ASSET = '/images/fun-stuff'
@@ -58,24 +59,12 @@ const BOOKS: Book[] = [
 const TITLE_WORDS = ['You’ve', 'stumbled', 'upon', 'my', 'secret', 'folder']
 
 function Header() {
-  return (
-    <>
-      <header className={styles.header}>
-        <nav className={styles.nav} aria-label="Project navigation">
-          <Link href="/#work">Work</Link>
-          <Link href="/#contact">Contact &amp; About</Link>
-        </nav>
-      </header>
-      <div className={styles.projectStrip}>
-        <span>Fun Stuff</span>
-      </div>
-    </>
-  )
+  return <CaseStudyHeader title="Fun Stuff" />
 }
 
 function DesktopCanvas() {
   return (
-    <ScaledCanvas className={styles.canvas} ariaLabel="Fun stuff — Abhi's secret folder" height={1309} header={<Header />}>
+    <ScaledCanvas className={styles.canvas} ariaLabel="Fun stuff — Abhi's secret folder" height={1347} header={<Header />}>
 
       <AmbientLayer>
         {/* Open right zone — big lime starburst filling the empty right half */}
@@ -200,24 +189,14 @@ function DesktopCanvas() {
         View Design Portfolio
       </span>
 
-      {/* 920:38 — Go Back to Projects */}
-      <div className={styles.goBackSlot} data-reveal="pop">
-        <Magnetic>
-          <Link href="/#work" className={styles.goBackButton}>
-            <span className={styles.goBackLabel}>
-              Go Back <br aria-hidden="true" />
-              to Projects
-            </span>
-          </Link>
-        </Magnetic>
-      </div>
-      {/* 920:41 — Get in Touch */}
-      <div className={styles.getInTouchSlot} data-reveal="pop" data-reveal-delay="1">
-        <Magnetic>
-          <Link href="/#contact" className={styles.getInTouchButton}>
-            <span className={styles.getInTouchLabel}>Get in Touch</span>
-          </Link>
-        </Magnetic>
+      {/* Closing buttons */}
+      <div className={buttons.canvasRow} style={{ left: 80, top: 1207 }}>
+        <Link href="/#work" className={buttons.primary}>
+          Go Back to Projects
+        </Link>
+        <Link href="/#contact" className={buttons.secondary}>
+          Get in Touch
+        </Link>
       </div>
     </ScaledCanvas>
   )
@@ -283,22 +262,13 @@ function MobileLayout() {
         </a>
       </section>
 
-      <div className={styles.mobileButtons}>
-        <Magnetic>
-          <Link href="/#work" className={styles.mobilePrimaryButton} data-reveal="pop">
-            Go Back to Projects
-          </Link>
-        </Magnetic>
-        <Magnetic>
-          <Link
-            href="/#contact"
-            className={styles.mobileSecondaryButton}
-            data-reveal="pop"
-            data-reveal-delay="1"
-          >
-            Get in Touch
-          </Link>
-        </Magnetic>
+      <div className={`${styles.mobileButtons} ${buttons.row}`}>
+        <Link href="/#work" className={buttons.primary}>
+          Go Back to Projects
+        </Link>
+        <Link href="/#contact" className={buttons.secondary}>
+          Get in Touch
+        </Link>
       </div>
     </div>
   )

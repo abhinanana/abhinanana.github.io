@@ -2,7 +2,7 @@
 
 import { type FormEvent, useState } from 'react'
 import Image from 'next/image'
-import Magnetic from '@/components/Fx/Magnetic'
+import buttons from '@/components/Button/Button.module.css'
 import styles from './ContactSection.module.css'
 
 const BIO = `As a marketer, it is in my job description to lie a little. To play fast and dirty with honesty, to exaggerate some things and hide others. But I will cross my heart and die on this hill - I love words. And because I want you to hire me as your creative strategist, I also love brand marketing and good design and GTM strategy and AI optimisation and confusing acronyms (TOFU, BOFU, AIDA, the list goes on).
@@ -129,22 +129,20 @@ export default function ContactSection() {
               <label htmlFor="contact-website">Leave this field empty</label>
               <input id="contact-website" name="website" type="text" tabIndex={-1} autoComplete="off" />
             </div>
-            <Magnetic>
-              <button
-                type="submit"
-                className={styles.sendBtn}
-                disabled={submission.type === 'submitting'}
-                aria-live="polite"
-                data-reveal="pop"
-                data-reveal-delay="5"
-              >
-                {submission.type === 'submitting'
-                  ? 'Sending…'
-                  : submission.type === 'success'
-                    ? 'Sent!'
-                    : 'Send'}
-              </button>
-            </Magnetic>
+            <button
+              type="submit"
+              className={`${buttons.primary} ${styles.sendBtn}`}
+              disabled={submission.type === 'submitting'}
+              aria-live="polite"
+              data-reveal="pop"
+              data-reveal-delay="5"
+            >
+              {submission.type === 'submitting'
+                ? 'Sending…'
+                : submission.type === 'success'
+                  ? 'Sent!'
+                  : 'Send'}
+            </button>
             <p
               className={styles.formStatus}
               role="status"
@@ -186,24 +184,20 @@ export default function ContactSection() {
 
             <p className={styles.bio} data-reveal="rise" data-reveal-delay="1">{BIO}</p>
 
-            <div className={styles.footerButtons}>
-              <Magnetic>
-                <a className={styles.btnBrowse} href="#work" data-reveal="pop" data-reveal-delay="2">
-                  Browse Projects
-                </a>
-              </Magnetic>
-              <Magnetic>
-                <a
-                  className={styles.btnResume}
-                  href="/resume.pdf"
-                  target="_blank"
-                  rel="noreferrer"
-                  data-reveal="pop"
-                  data-reveal-delay="3"
-                >
-                  Download Resume
-                </a>
-              </Magnetic>
+            <div className={`${styles.footerButtons} ${buttons.row}`}>
+              <a className={buttons.primary} href="#work" data-reveal="pop" data-reveal-delay="2">
+                Browse Projects
+              </a>
+              <a
+                className={buttons.secondary}
+                href="/resume.pdf"
+                target="_blank"
+                rel="noreferrer"
+                data-reveal="pop"
+                data-reveal-delay="3"
+              >
+                Download Resume
+              </a>
             </div>
           </div>
         </div>

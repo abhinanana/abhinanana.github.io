@@ -1,8 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import MediaThumbnail from '@/components/MediaThumbnail/MediaThumbnail'
-import Magnetic from '@/components/Fx/Magnetic'
+import CaseStudyHeader from '@/components/CaseStudyHeader/CaseStudyHeader'
 import ScaledCanvas from '@/components/ScaledCanvas/ScaledCanvas'
+import buttons from '@/components/Button/Button.module.css'
 import { getNextProject } from '@/lib/projects'
 import styles from './page.module.css'
 
@@ -11,24 +12,12 @@ const NEXT = getNextProject('print-media')
 const DIARY_FILM = 'https://youtu.be/SjeddqEPw9k'
 
 function Header() {
-  return (
-    <>
-      <header className={styles.header}>
-        <nav className={styles.nav} aria-label="Project navigation">
-          <Link href="/#work">Work</Link>
-          <Link href="/#contact">Contact &amp; About</Link>
-        </nav>
-      </header>
-      <div className={styles.projectStrip}>
-        <span>Print Media</span>
-      </div>
-    </>
-  )
+  return <CaseStudyHeader title="Print Media" />
 }
 
 function DesktopCanvas() {
   return (
-    <ScaledCanvas className={styles.canvas} ariaLabel="Print Media case study" height={4540} header={<Header />}>
+    <ScaledCanvas className={styles.canvas} ariaLabel="Print Media case study" height={4598} header={<Header />}>
       {/* Lower-section background band (Green Yodha) */}
       <div className={styles.greenBand} aria-hidden="true" />
 
@@ -146,18 +135,14 @@ function DesktopCanvas() {
         on opening the flap, revealed the answer: Green Yodhas don&rsquo;t have to choose.
       </p>
 
-      {/* ---------- Footer buttons ---------- */}
-      <div className={styles.footerButtons}>
-        <Magnetic>
-          <Link href={NEXT.href} className={styles.primaryButton} data-reveal="pop">
-            Next Project
-          </Link>
-        </Magnetic>
-        <Magnetic>
-          <Link href="/#contact" className={styles.secondaryButton} data-reveal="pop" data-reveal-delay="1">
-            Get in Touch
-          </Link>
-        </Magnetic>
+      {/* Closing buttons */}
+      <div className={buttons.canvasRow} style={{ left: 80, top: 4458 }}>
+        <Link href={NEXT.href} className={buttons.primary}>
+          Next Project
+        </Link>
+        <Link href="/#contact" className={buttons.secondary}>
+          Get in Touch
+        </Link>
       </div>
     </ScaledCanvas>
   )
@@ -262,17 +247,13 @@ function MobileLayout() {
         </p>
       </section>
 
-      <div className={styles.mobileButtons}>
-        <Magnetic>
-          <Link href={NEXT.href} className={styles.primaryButton} data-reveal="pop">
-            Next Project
-          </Link>
-        </Magnetic>
-        <Magnetic>
-          <Link href="/#contact" className={styles.secondaryButton} data-reveal="pop" data-reveal-delay="1">
-            Get in Touch
-          </Link>
-        </Magnetic>
+      <div className={`${styles.mobileButtons} ${buttons.row}`}>
+        <Link href={NEXT.href} className={buttons.primary}>
+          Next Project
+        </Link>
+        <Link href="/#contact" className={buttons.secondary}>
+          Get in Touch
+        </Link>
       </div>
     </div>
   )

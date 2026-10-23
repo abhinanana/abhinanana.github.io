@@ -152,66 +152,8 @@
 
 /* ── Buttons ── */
 .buttons {
-  display: flex;
-  flex-direction: row;
-  gap: 13px;
   margin-top: 24px;
   margin-left: 149px;
-}
-
-.btnPrimary {
-  width: 181px;
-  height: 61px;
-  background: var(--color-pink-mid);
-  border: 3px solid black;
-  border-radius: 63px;
-  font-family: 'Helvetica', Arial, sans-serif;
-  font-weight: 700;
-  font-size: 17px;
-  color: black;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  text-align: center;
-  line-height: 1.115;
-  box-shadow: 0 7px 0 black;
-  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
-}
-
-.btnSecondary {
-  width: 180px;
-  height: 60px;
-  background: var(--color-pink-light);
-  border: 3px solid black;
-  border-radius: 63px;
-  font-family: 'Helvetica', Arial, sans-serif;
-  font-weight: 700;
-  font-size: 17px;
-  color: black;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  text-align: center;
-  line-height: 1.115;
-  box-shadow: 0 7px 0 black;
-  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
-}
-
-.btnPrimary:hover,
-.btnSecondary:hover {
-  opacity: 1;
-  transform: translateY(-4px);
-  box-shadow: 0 11px 0 black;
-}
-
-.btnPrimary:active,
-.btnSecondary:active {
-  transform: translateY(2px);
-  box-shadow: 0 3px 0 black;
 }
 
 /* ── Responsive ── */
@@ -223,6 +165,13 @@
   .content {
     padding-top: clamp(168px, 30svh, 232px);
     padding-bottom: clamp(36px, 6svh, 64px);
+  }
+
+  /* The tightened composition still sits low (145px above vs 44px below at
+     1440 × 662), so lift decoratives + text together until it is optically
+     centred between the nav and the fold; eases back to 0 by 820px high. */
+  .contentWrap {
+    translate: 0 clamp(-50px, 35svh - 300px, 0px);
   }
 
   .welcome {
@@ -378,12 +327,11 @@
   }
   .buttons {
     flex-direction: column;
-    gap: 12px;
     margin-left: 0;
     width: min(100%, 340px);
   }
-  .btnPrimary,
-  .btnSecondary {
+
+  .buttons > * {
     width: 100%;
   }
 }
@@ -431,10 +379,5 @@
   .ornamentC {
     animation: none;
     opacity: 1;
-  }
-
-  .btnPrimary,
-  .btnSecondary {
-    transition: none;
   }
 }

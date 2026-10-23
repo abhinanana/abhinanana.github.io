@@ -1,9 +1,10 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { AmbientLayer, Starburst } from '@/components/Ambient/Ambient'
-import Magnetic from '@/components/Fx/Magnetic'
 import InstagramEmbedCard from './InstagramEmbedCard'
+import CaseStudyHeader from '@/components/CaseStudyHeader/CaseStudyHeader'
 import ScaledCanvas from '@/components/ScaledCanvas/ScaledCanvas'
+import buttons from '@/components/Button/Button.module.css'
 import { getNextProject } from '@/lib/projects'
 import styles from './page.module.css'
 
@@ -158,17 +159,7 @@ const mobileBrandLinks = [
 ]
 
 function Header() {
-  return (
-    <header className={styles.header}>
-      <nav className={styles.nav} aria-label="Project navigation">
-        <Link href="/#work">Work</Link>
-        <Link href="/#contact">Contact &amp; About</Link>
-      </nav>
-      <div className={styles.projectStrip}>
-        <span>Social Media Brand Identity</span>
-      </div>
-    </header>
-  )
+  return <CaseStudyHeader title="Social Media Brand Identity" />
 }
 
 function HeroCollage() {
@@ -235,7 +226,7 @@ function HeroCollage() {
 
 function DesktopCanvas() {
   return (
-    <ScaledCanvas className={styles.canvas} ariaLabel="Social Media Brand Identity case study" height={5620} header={<Header />}>
+    <ScaledCanvas className={styles.canvas} ariaLabel="Social Media Brand Identity case study" height={5760} header={<Header />}>
 
       <AmbientLayer>
         {/* Hero / Not-Like-Other-Brands open right margin */}
@@ -422,24 +413,16 @@ function DesktopCanvas() {
           of internet culture, an amalgamation of current and past trends connected by vague, dream-like logic that
           transformed fleeting references into something timeless.
         </p>
-        <div className={styles.footerButtons}>
-          <Magnetic>
-            <Link href={NEXT.href} className={styles.primaryButton} data-reveal="pop">
-              Next Project
-            </Link>
-          </Magnetic>
-          <Magnetic>
-            <Link
-              href="/#contact"
-              className={styles.secondaryButton}
-              data-reveal="pop"
-              data-reveal-delay="1"
-            >
-              Get in Touch
-            </Link>
-          </Magnetic>
-        </div>
       </section>
+      {/* Closing buttons */}
+      <div className={buttons.canvasRow} style={{ left: 80, top: 5620 }}>
+        <Link href={NEXT.href} className={buttons.primary}>
+          Next Project
+        </Link>
+        <Link href="/#contact" className={buttons.secondary}>
+          Get in Touch
+        </Link>
+      </div>
     </ScaledCanvas>
   )
 }
@@ -529,22 +512,13 @@ function MobileLayout() {
           I created a looping “fever dream” of internet culture, an amalgamation of current and past trends
           connected by vague, dream-like logic that transformed fleeting references into something timeless.
         </p>
-        <div className={styles.mobileButtons}>
-          <Magnetic>
-            <Link href={NEXT.href} className={styles.primaryButton} data-reveal="pop">
-              Next Project
-            </Link>
-          </Magnetic>
-          <Magnetic>
-            <Link
-              href="/#contact"
-              className={styles.secondaryButton}
-              data-reveal="pop"
-              data-reveal-delay="1"
-            >
-              Get in Touch
-            </Link>
-          </Magnetic>
+        <div className={`${styles.mobileButtons} ${buttons.row}`}>
+          <Link href={NEXT.href} className={buttons.primary}>
+            Next Project
+          </Link>
+          <Link href="/#contact" className={buttons.secondary}>
+            Get in Touch
+          </Link>
         </div>
       </section>
     </div>
